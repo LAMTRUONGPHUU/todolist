@@ -18,7 +18,12 @@ app.use(passport.initialize());
 app.use(sessionMiddleware);
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+// app.use(cors({
+//   origin: "http://localhost:4200", // Angular dev server
+//   credentials: true
+// }));
+
 
 connectDB();
 

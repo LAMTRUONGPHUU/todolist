@@ -1,0 +1,55 @@
+<header class="w-full bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+
+    <!-- Left: Logo -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">
+        ✔
+      </div>
+      <span class="text-xl font-semibold text-gray-800">
+        Todo<span class="text-blue-600">Pro</span>
+      </span>
+    </div>
+
+    <!-- Center: Navigation -->
+<nav class="hidden md:flex items-center gap-6 text-gray-600 font-medium">
+  <a routerLink="/" routerLinkActive="text-blue-600">
+    All
+  </a>
+  <a routerLink="/today" routerLinkActive="text-blue-600">
+    Today
+  </a>
+  <a routerLink="/completed" routerLinkActive="text-blue-600">
+    Completed
+  </a>
+</nav>
+
+    <!-- Right: Search + User -->
+    <div class="flex items-center gap-4">
+
+      <!-- Search -->
+      <div class="hidden sm:block relative">
+        <input
+          type="text"
+          placeholder="Search todos..."
+          class="pl-9 pr-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+          🔍
+        </span>
+      </div>
+
+      <!-- User -->
+      <div class="flex items-center gap-2 cursor-pointer">
+        <img
+          [src]="user.avatar"
+          class="w-9 h-9 rounded-full border"
+        />
+        <span class="hidden sm:block text-sm font-medium text-gray-700">
+          {{ user.name }}
+        </span>
+      </div>
+    </div>
+
+  </div>
+</header>

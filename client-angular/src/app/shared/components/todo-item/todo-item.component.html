@@ -1,0 +1,18 @@
+
+<div class="p-4 border rounded flex justify-between items-center">
+  <div>
+    <h3 class="font-medium">{{ todo.title }}</h3>
+    <p *ngIf="todo.content" class="text-sm text-gray-500">
+      {{ todo.content }}
+    </p>
+  </div>
+
+  <!-- <select -->
+  <!--   class="border rounded px-2 py-1 text-sm" -->
+  <!--   [value]="todo.status" -->
+  <!--   (change)="statusChange.emit(+($event.target as HTMLSelectElement).value)"> -->
+  <!--   <option [value]="TodoStatus.NOT_STARTED">Not started</option> -->
+  <!--   <option [value]="TodoStatus.IN_PROGRESS">In progress</option> -->
+  <!--   <option [value]="TodoStatus.DONE">Done</option> -->
+  <!-- </select> -->
+</div>
