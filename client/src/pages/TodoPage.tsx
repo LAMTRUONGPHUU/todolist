@@ -27,6 +27,7 @@ const TodoPage = () => {
     updateTodoStatus,
   } = useTodos();
 
+
   const [localTodos, setLocalTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
@@ -53,7 +54,7 @@ const TodoPage = () => {
     setIsDragging(true);
 
     const id = event.active.id as string;
-    const todo = localTodos.find((t) => t._id === id);
+    const todo = localTodos.find((t) => t.id === id);
 
     setActiveTodo(todo ?? null);
   };
@@ -72,7 +73,7 @@ const TodoPage = () => {
 
     setLocalTodos((todos) =>
       todos.map((todo) =>
-        todo._id === activeId && todo.status !== newStatus
+        todo.id === activeId && todo.status !== newStatus
           ? { ...todo, status: newStatus }
           : todo
       )
@@ -106,7 +107,7 @@ const TodoPage = () => {
     }
 
     if (over.id === "EDIT") {
-      const todo = serverTodos?.find((t) => t._id === activeId);
+      const todo = serverTodos?.find((t) => t.id === activeId);
       if (!todo) return;
 
       setEditingTodo(todo);
@@ -117,7 +118,7 @@ const TodoPage = () => {
       return;
     }
     // 👉 NORMAL COLUMN DROP
-    const draggedTodo = serverTodos?.find((t) => t._id === activeId);
+    const draggedTodo = serverTodos?.find((t) => t.id === activeId);
     if (!draggedTodo) return;
 
     const finalStatus =
@@ -205,7 +206,7 @@ const TodoPage = () => {
           if (!editingTodo) return;
 
           updateTodo({
-            id: editingTodo._id,
+            id: editingTodo.id,
             title: data.title,
             content: data.content || "",
 

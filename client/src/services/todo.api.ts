@@ -6,8 +6,15 @@ export enum TodoStatus {
   IN_PROGRESS = 1,
   COMPLETED = 2
 }
+// export type Todo = {
+//   _id: string;
+//   title: string;
+//   content: string;
+//   status: TodoStatus;
+//   userId: string;
+// };
 export type Todo = {
-  _id: string;
+  id: string;
   title: string;
   content: string;
   status: TodoStatus;

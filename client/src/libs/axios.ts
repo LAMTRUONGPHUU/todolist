@@ -8,7 +8,7 @@ export const setAccessToken = (token: string | null) => {
 
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
-  withCredentials: true,
+  // withCredentials: true,
 });
 
 axiosClient.interceptors.request.use((config) => {

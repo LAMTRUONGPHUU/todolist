@@ -68,7 +68,7 @@ export const useTodos = () => {
 
       queryClient.setQueryData<Todo[]>(["todos"], (old) =>
         old?.map((todo) =>
-          todo._id === id ? { ...todo, status } : todo
+          todo.id === id ? { ...todo, status } : todo
         )
       );
 
@@ -98,7 +98,7 @@ export const useTodos = () => {
       queryClient.setQueryData<Todo[]>(["todos"], (old) =>
         old
           ? old.map((t) =>
-            t._id === updatedTodo._id ? updatedTodo : t
+            t.id === updatedTodo.id ? updatedTodo : t
           )
           : []
       );
@@ -110,7 +110,7 @@ export const useTodos = () => {
     mutationFn: deleteTodo,
     onSuccess: (_data, deletedId) => {
       queryClient.setQueryData<Todo[]>(["todos"], (old) =>
-        old ? old.filter((t) => t._id !== deletedId) : []
+        old ? old.filter((t) => t.id !== deletedId) : []
       );
     },
   });

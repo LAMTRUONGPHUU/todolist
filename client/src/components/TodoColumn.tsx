@@ -32,12 +32,12 @@ export const TodoColumn = ({ status, title, todos, over }: Props) => {
       <h3 className="mb-4 text-lg font-bold">{title}</h3>
 
       <SortableContext
-        items={todos.map((t) => t._id)}
+        items={todos.map((t) => t.id)}
         strategy={verticalListSortingStrategy}
       >
         <div className="flex flex-col gap-3">
           {todos.map((todo) => (
-            <TodoCard key={todo._id} todo={todo} />
+            <TodoCard key={todo.id} todo={todo} />
           ))}
         </div>
       </SortableContext>

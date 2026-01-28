@@ -1,0 +1,10 @@
+{
+  "name": "mock-api",
+  "private": true,
+  "scripts": {
+    "mock": "node server.js"
+  },
+  "devDependencies": {
+    "json-server": "0.17.4"
+  }
+}

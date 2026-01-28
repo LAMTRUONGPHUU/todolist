@@ -1,0 +1,66 @@
+{
+  "todo": [
+    {
+      "id": "1",
+      "title": "Learn TypeScript",
+      "content": "Study TS basics",
+      "status": 0,
+      "userId": "user-1"
+    },
+    {
+      "id": "2",
+      "title": "Build Todo App",
+      "content": "React + React Query",
+      "status": 0,
+      "userId": "user-1"
+    },
+    {
+      "id": "d275",
+      "title": "qwd",
+      "content": "xzccx",
+      "status": 0,
+      "userId": "user-1"
+    },
+    {
+      "id": "e7c3",
+      "title": "dasd",
+      "content": "dsad",
+      "status": 2,
+      "userId": "user-1"
+    },
+    {
+      "title": "qwd",
+      "content": "qwd",
+      "id": "gerg-7H"
+    },
+    {
+      "title": "czxc",
+      "content": "zxczxc",
+      "id": "2X7DGBt"
+    },
+    {
+      "title": "qw",
+      "content": "dqw",
+      "status": 0,
+      "userId": "user-1",
+      "_id": "87ae7f1b-1528-435a-a015-4a270567948e",
+      "id": "qGkE4dw"
+    },
+    {
+      "title": "b",
+      "content": "bfb",
+      "_id": "453f99ee-42f5-48a3-b17d-f85dcd1f7b6f",
+      "status": 2,
+      "userId": "user-1",
+      "id": "w5DviRj"
+    }
+  ],
+  "authMe": {
+    "accessToken": "dev-access-token",
+    "user": {
+      "id": "dev-id",
+      "email": "dev@gmail.com",
+      "name": "Dev User"
+    }
+  }
+}
