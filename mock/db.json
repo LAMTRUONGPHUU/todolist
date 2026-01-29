@@ -1,58 +1,28 @@
 {
   "todo": [
     {
-      "id": "1",
-      "title": "Learn TypeScript",
-      "content": "Study TS basics",
-      "status": 0,
-      "userId": "user-1"
-    },
-    {
-      "id": "2",
-      "title": "Build Todo App",
-      "content": "React + React Query",
-      "status": 0,
-      "userId": "user-1"
-    },
-    {
-      "id": "d275",
-      "title": "qwd",
-      "content": "xzccx",
-      "status": 0,
-      "userId": "user-1"
-    },
-    {
-      "id": "e7c3",
-      "title": "dasd",
-      "content": "dsad",
-      "status": 2,
-      "userId": "user-1"
+      "title": "dqwd",
+      "content": "dqwdqwd",
+      "id": "a0396fce-3d40-4900-8d10-647d0fc01c39",
+      "status": 1,
+      "userId": "user-1",
+      "_id": "a0396fce-3d40-4900-8d10-647d0fc01c39"
     },
     {
       "title": "qwd",
-      "content": "qwd",
-      "id": "gerg-7H"
-    },
-    {
-      "title": "czxc",
-      "content": "zxczxc",
-      "id": "2X7DGBt"
-    },
-    {
-      "title": "qw",
-      "content": "dqw",
-      "status": 0,
+      "content": "dqwqwdq",
+      "id": "6a9b5339-a561-4a6c-921b-475af77c3e06",
+      "status": 1,
       "userId": "user-1",
-      "_id": "87ae7f1b-1528-435a-a015-4a270567948e",
-      "id": "qGkE4dw"
+      "_id": "6a9b5339-a561-4a6c-921b-475af77c3e06"
     },
     {
-      "title": "b",
-      "content": "bfb",
-      "_id": "453f99ee-42f5-48a3-b17d-f85dcd1f7b6f",
-      "status": 2,
+      "title": "qwdqwd",
+      "content": "qwdqw",
+      "id": "f13673b7-2f55-42fc-badc-30d07376c593",
+      "status": 1,
       "userId": "user-1",
-      "id": "w5DviRj"
+      "_id": "f13673b7-2f55-42fc-badc-30d07376c593"
     }
   ],
   "authMe": {

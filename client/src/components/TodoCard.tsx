@@ -16,7 +16,7 @@ export const TodoCard = ({ todo }: Props) => {
     transform,
     transition,
   } = useSortable({
-    id: todo.id,
+    id: todo._id,
     data: {
       status: todo.status,
       type: "card",

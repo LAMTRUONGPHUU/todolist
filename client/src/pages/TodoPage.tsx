@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { closestCenter, defaultDropAnimationSideEffects, DndContext, DragOverlay, useDndContext, type DragEndEvent, type DragOverEvent, type DragStartEvent } from "@dnd-kit/core";
+import { closestCenter, defaultDropAnimationSideEffects, DndContext, DragOverlay, useDndContext, type DragEndEvent, type DragOverEvent, type DragStartEvent, type UniqueIdentifier } from "@dnd-kit/core";
 import { useTodos } from "@/hooks/useTodos";
 import { TodoColumn } from "@/components/TodoColumn";
 import { STATUS_COLUMNS, STATUS_LABEL } from "@/constants/todo";
@@ -7,6 +7,7 @@ import { TodoStatus, type Todo } from "@/services/todo.api";
 import { TrashDropZone } from "@/components/TrashDropZone";
 import { EditDropZone } from "@/components/EditDropZone";
 import { EditTodoDialog } from "@/components/EditTodoDialog";
+import { Container } from "lucide-react";
 
 const TodoPage = () => {
   const [title, setTitle] = useState("");
@@ -50,11 +51,17 @@ const TodoPage = () => {
 
   const [activeTodo, setActiveTodo] = useState<Todo | null>(null);
 
+  function findContainerId(itemId: UniqueIdentifier): UniqueIdentifier | undefined {
+    if (localTodos.some((localTodo) => localTodo._id === itemId)) return itemId
+
+
+  }
+
   const handleDragStart = (event: DragStartEvent) => {
     setIsDragging(true);
 
     const id = event.active.id as string;
-    const todo = localTodos.find((t) => t.id === id);
+    const todo = localTodos.find((t) => t._id === id);
 
     setActiveTodo(todo ?? null);
   };
@@ -73,7 +80,7 @@ const TodoPage = () => {
 
     setLocalTodos((todos) =>
       todos.map((todo) =>
-        todo.id === activeId && todo.status !== newStatus
+        todo._id === activeId && todo.status !== newStatus
           ? { ...todo, status: newStatus }
           : todo
       )
@@ -107,7 +114,7 @@ const TodoPage = () => {
     }
 
     if (over.id === "EDIT") {
-      const todo = serverTodos?.find((t) => t.id === activeId);
+      const todo = serverTodos?.find((t) => t._id === activeId);
       if (!todo) return;
 
       setEditingTodo(todo);
@@ -118,7 +125,7 @@ const TodoPage = () => {
       return;
     }
     // 👉 NORMAL COLUMN DROP
-    const draggedTodo = serverTodos?.find((t) => t.id === activeId);
+    const draggedTodo = serverTodos?.find((t) => t._id === activeId);
     if (!draggedTodo) return;
 
     const finalStatus =
@@ -206,7 +213,7 @@ const TodoPage = () => {
           if (!editingTodo) return;
 
           updateTodo({
-            id: editingTodo.id,
+            id: editingTodo._id,
             title: data.title,
             content: data.content || "",
 
