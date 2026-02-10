@@ -6,14 +6,14 @@ import { STATUS_COLUMNS, STATUS_LABEL } from "@/constants/todo";
 import { TrashDropZone } from "@/components/TrashDropZone";
 import { EditDropZone } from "@/components/EditDropZone";
 import { EditTodoDialog } from "@/components/EditTodoDialog";
-import { Container } from "lucide-react";
+import { ColorCustomizer } from "@/components/ColorCustomizer";
+import { ColorProvider } from "@/contexts/ColorContext";
 import type { Todo, TodoStatus } from "@/types/todo";
 
-const TodoPage = () => {
+const TodoPageContent = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isDragging, setIsDragging] = useState(false);
-
 
   const [editingTodo, setEditingTodo] = useState<Todo | null>(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -27,7 +27,6 @@ const TodoPage = () => {
     deleteTodo,
     updateTodoStatus,
   } = useTodos();
-
 
   const [localTodos, setLocalTodos] = useState<Todo[]>([]);
 
@@ -77,7 +76,6 @@ const TodoPage = () => {
     const activeContainerId = findContainerId(activeId);
     const overContainerId = findContainerId(overId);
 
-    // Fix: Check for undefined explicitly, not falsy check
     if (activeContainerId === undefined || overContainerId === undefined) return;
     if (activeContainerId === overContainerId) return;
 
@@ -89,6 +87,7 @@ const TodoPage = () => {
       )
     );
   };
+
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
@@ -101,7 +100,6 @@ const TodoPage = () => {
 
     const activeId = active.id as string;
 
-    // 🗑 DROPPED ON TRASH
     if (over.id === "TRASH") {
       const confirmed = window.confirm("Do you want to delete this task?");
       if (confirmed) {
@@ -110,7 +108,6 @@ const TodoPage = () => {
       return;
     }
 
-    // ✏️ DROPPED ON EDIT
     if (over.id === "EDIT") {
       const todo = serverTodos?.find((t) => t._id === activeId);
       if (todo) {
@@ -120,7 +117,6 @@ const TodoPage = () => {
       return;
     }
 
-    // 👉 NORMAL COLUMN DROP
     const overContainerId = findContainerId(over.id);
 
     if (overContainerId === undefined) {
@@ -132,7 +128,6 @@ const TodoPage = () => {
 
     const finalStatus = overContainerId as TodoStatus;
 
-    // Only update if status changed
     if (draggedTodo.status !== finalStatus) {
       updateTodoStatus({
         id: activeId,
@@ -140,11 +135,13 @@ const TodoPage = () => {
       });
     }
   };
+
   const handleDragCancel = () => {
     setIsDragging(false);
     setActiveTodo(null);
     setLocalTodos(serverTodos ?? []);
   };
+
   const dropAnimation = {
     sideEffects: defaultDropAnimationSideEffects({
       styles: {
@@ -154,6 +151,7 @@ const TodoPage = () => {
       },
     }),
   };
+
   return (
     <div className="mx-auto max-w-6xl p-6">
       <h1 className="mb-6 text-2xl font-bold">📝 Todo Board</h1>
@@ -219,6 +217,7 @@ const TodoPage = () => {
         <EditDropZone isDragging={isDragging} />
         <TrashDropZone isDragging={isDragging} />
       </DndContext>
+
       <EditTodoDialog
         open={isEditOpen}
         todo={editingTodo}
@@ -230,12 +229,21 @@ const TodoPage = () => {
             id: editingTodo._id,
             title: data.title,
             content: data.content || "",
-
-
           });
         }}
       />
+
+      {/* Color Customizer */}
+      <ColorCustomizer />
     </div>
+  );
+};
+
+const TodoPage = () => {
+  return (
+    <ColorProvider>
+      <TodoPageContent />
+    </ColorProvider>
   );
 };
 
