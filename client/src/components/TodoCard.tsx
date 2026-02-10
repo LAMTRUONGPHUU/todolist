@@ -1,6 +1,5 @@
 
-// components/TodoCard.tsx
-import type { Todo } from "@/services/todo.api";
+import type { Todo } from "@/types/todo";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 

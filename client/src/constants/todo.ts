@@ -1,4 +1,4 @@
-import { TodoStatus } from "@/services/todo.api";
+import { TodoStatus } from "@/types/todo";
 
 
 export const STATUS_COLUMNS: TodoStatus[] = [

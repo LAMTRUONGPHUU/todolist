@@ -9,11 +9,10 @@ import {
   createTodo,
   toggleTodo,
   deleteTodo,
-  type Todo,
-  TodoStatus,
   updateTodoStatus,
   updateTodo,
 } from "../services/todo.api";
+import type { Todo, TodoStatus } from "@/types/todo";
 
 export const useTodos = () => {
   const queryClient = useQueryClient();
@@ -68,7 +67,7 @@ export const useTodos = () => {
 
       queryClient.setQueryData<Todo[]>(["todos"], (old) =>
         old?.map((todo) =>
-          todo.id === id ? { ...todo, status } : todo
+          todo._id === id ? { ...todo, status } : todo
         )
       );
 
@@ -98,7 +97,7 @@ export const useTodos = () => {
       queryClient.setQueryData<Todo[]>(["todos"], (old) =>
         old
           ? old.map((t) =>
-            t.id === updatedTodo.id ? updatedTodo : t
+            t._id === updatedTodo._id ? updatedTodo : t
           )
           : []
       );
@@ -110,7 +109,7 @@ export const useTodos = () => {
     mutationFn: deleteTodo,
     onSuccess: (_data, deletedId) => {
       queryClient.setQueryData<Todo[]>(["todos"], (old) =>
-        old ? old.filter((t) => t.id !== deletedId) : []
+        old ? old.filter((t) => t._id !== deletedId) : []
       );
     },
   });
