@@ -54,7 +54,21 @@ export default {
           '5': 'hsl(var(--chart-5))'
         }
       }
-    }
+    },
+    safelist: [
+      {
+        pattern: /bg-(gray|blue|green|red|yellow|purple|pink|indigo|orange|teal)-(50|100|200)/,
+      },
+      {
+        pattern: /border-(gray|blue|green|red|yellow|purple|pink|indigo|orange|teal)-300/,
+      },
+      {
+        pattern: /text-(gray|blue|green|red|yellow|purple|pink|indigo|orange|teal)-700/,
+      },
+      {
+        pattern: /hover:bg-(gray|blue|green|red|yellow|purple|pink|indigo|orange|teal)-200/,
+      },
+    ],
   },
   plugins: [require("tailwindcss-animate")],
 }
