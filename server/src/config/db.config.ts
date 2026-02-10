@@ -3,6 +3,8 @@ import { AppConfig } from "./app.config";
 
 export async function connectDB() {
   try {
+
+    console.log("MONGO_URI =", process.env.MONGO_URI);
     await mongoose.connect(AppConfig.databaseUri);
     console.log("MongoDB connected");
   } catch (err) {

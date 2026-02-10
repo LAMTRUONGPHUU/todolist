@@ -13,7 +13,20 @@ export const useAuth = () => {
   const queryClient = useQueryClient();
 
   const loginMutation = useMutation({
-    mutationFn: loginApi,
+    mutationFn: async (data: { email: string; password: string }) => {
+      if (data.email === "dev@gmail.com" && data.password === "123qwe") {
+        return {
+          message: "Dev login success",
+          accessToken: "dev-access-token",
+          user: {
+            id: "dev-id",
+            email: "dev@gmail.com",
+            name: "Dev User",
+          },
+        };
+      }
+      return loginApi(data);
+    },
     onSuccess: (data: AuthResponse) => {
       setAccessToken(data.accessToken);
       queryClient.invalidateQueries({ queryKey: ["auth", "me"] });

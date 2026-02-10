@@ -9,11 +9,10 @@ import {
   createTodo,
   toggleTodo,
   deleteTodo,
-  type Todo,
-  TodoStatus,
   updateTodoStatus,
   updateTodo,
 } from "../services/todo.api";
+import type { Todo, TodoStatus } from "@/types/todo";
 
 export const useTodos = () => {
   const queryClient = useQueryClient();

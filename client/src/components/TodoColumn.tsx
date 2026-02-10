@@ -1,8 +1,8 @@
 
 import { useDroppable } from "@dnd-kit/core";
 import { TodoCard } from "./TodoCard";
-import type { TodoStatus, Todo } from "@/services/todo.api";
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import type { Todo, TodoStatus } from "@/types/todo";
 
 type Props = {
   status: TodoStatus;
