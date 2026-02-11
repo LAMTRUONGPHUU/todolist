@@ -3,11 +3,13 @@ export enum TodoStatus {
   IN_PROGRESS = 1,
   COMPLETED = 2
 }
+
 export type Todo = {
   _id: string;
   title: string;
   content: string;
   status: TodoStatus;
   userId: string;
+  order?: number; // Add this
 };
 
