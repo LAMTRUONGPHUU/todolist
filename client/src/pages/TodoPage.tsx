@@ -91,7 +91,6 @@ const TodoPageContent = () => {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    // Always clean up drag state first
     setActiveTodo(null);
     setIsDragging(false);
 
@@ -122,20 +121,28 @@ const TodoPageContent = () => {
       return;
     }
 
-    // 👉 FIND CONTAINERS
-    const activeContainerId = findContainerId(activeId);
-    const overContainerId = findContainerId(overId);
-
-    // Invalid drop
-    if (activeContainerId === undefined || overContainerId === undefined) {
+    // 👉 FIND CONTAINERS - Use serverTodos for the ORIGINAL status
+    const draggedTodo = serverTodos?.find((t) => t._id === activeId);
+    if (!draggedTodo) {
       setLocalTodos(serverTodos ?? []);
       return;
     }
 
-    // 🔄 REORDERING WITHIN SAME COLUMN
-    if (activeContainerId === overContainerId && activeId !== overId) {
-      const containerTodos = localTodos.filter((t) => t.status === activeContainerId);
+    const activeContainerId = draggedTodo.status; // Original status from server
+    const overContainerId = findContainerId(overId);
 
+    // Invalid drop
+    if (overContainerId === undefined) {
+      setLocalTodos(serverTodos ?? []);
+      return;
+    }
+
+    // Check if overId is a todo card
+    const isOverATodoCard = serverTodos.some((t) => t._id === overId);
+
+    // 🔄 REORDERING WITHIN SAME COLUMN (only if both are in same column AND overId is a card)
+    if (activeContainerId === overContainerId && isOverATodoCard && activeId !== overId) {
+      const containerTodos = localTodos.filter((t) => t.status === activeContainerId);
       const activeIndex = containerTodos.findIndex((item) => item._id === activeId);
       const overIndex = containerTodos.findIndex((item) => item._id === overId);
 
@@ -154,21 +161,11 @@ const TodoPageContent = () => {
         return [...otherTodos, ...reorderedTodos];
       });
 
-      // You would need to call an API here to persist the order
-      // For now, the visual reordering works but won't persist on refresh
       return;
     }
 
     // 📦 MOVING TO DIFFERENT COLUMN
-    const draggedTodo = serverTodos?.find((t) => t._id === activeId);
-    if (!draggedTodo) {
-      setLocalTodos(serverTodos ?? []);
-      return;
-    }
-
     const finalStatus = overContainerId as TodoStatus;
-
-    console.log("finalStatus", finalStatus, draggedTodo.status,);
 
     // Only update if status changed
     if (draggedTodo.status !== finalStatus) {

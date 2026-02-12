@@ -4,7 +4,7 @@
       "title": "dqwd",
       "content": "dqwdqwd",
       "id": "a0396fce-3d40-4900-8d10-647d0fc01c39",
-      "status": 2,
+      "status": 0,
       "userId": "user-1",
       "_id": "a0396fce-3d40-4900-8d10-647d0fc01c39"
     },
@@ -12,7 +12,7 @@
       "title": "qwd",
       "content": "dqwqwdq",
       "id": "6a9b5339-a561-4a6c-921b-475af77c3e06",
-      "status": 1,
+      "status": 0,
       "userId": "user-1",
       "_id": "6a9b5339-a561-4a6c-921b-475af77c3e06"
     },
@@ -20,7 +20,7 @@
       "title": "test",
       "content": "gt",
       "id": "f13673b7-2f55-42fc-badc-30d07376c593",
-      "status": 1,
+      "status": 0,
       "userId": "user-1",
       "_id": "f13673b7-2f55-42fc-badc-30d07376c593"
     },
@@ -36,7 +36,7 @@
       "title": "qwd",
       "content": "dqqddqw",
       "id": "43efc605-839f-4702-b165-1f24ee2ca50d",
-      "status": 0,
+      "status": 1,
       "userId": "user-1",
       "_id": "43efc605-839f-4702-b165-1f24ee2ca50d"
     }
